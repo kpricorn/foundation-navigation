@@ -13,6 +13,30 @@ module FoundationNavigation
       it 'leaves the title empty' do
         expect(subject.to_s).to_not have_tag('ul.title-area > li.name > h1')
       end
+
+      it 'renders .toggle-topbar.menu-icon' do
+        expect(subject.to_s).to have_tag('ul.title-area > li.toggle-topbar.menu-icon')
+      end
+
+      it 'renders the default Menu text' do
+        expect(subject.to_s).to have_tag('ul.title-area > li.toggle-topbar.menu-icon > a') do
+          with_tag('span', text: 'Menu')
+        end
+      end
+    end
+
+    context 'with custom menu_text' do
+      it 'renders that text' do
+        expect(TitleArea.new(menu_text: 'My Menu').to_s).to have_tag('ul.title-area > li.toggle-topbar.menu-icon > a') do
+          with_tag('span', text: 'My Menu')
+        end
+      end
+    end
+
+    context 'with menu_icon false' do
+      it 'renders .toggle-topbar.menu-icon' do
+        expect(TitleArea.new(menu_icon: false).to_s).to_not have_tag('ul.title-area > li.menu-icon')
+      end
     end
 
     context 'with only title' do
