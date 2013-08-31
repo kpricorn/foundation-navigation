@@ -2,25 +2,25 @@ require 'spec_helper'
 require 'padrino-helpers'
 require 'foundation-navigation/topbar'
 
-describe FoundationNavigation::Topbar do
+module FoundationNavigation
+  describe Topbar do
 
-  subject do
-    Class.new do
-      include Padrino::Helpers::OutputHelpers
-      include FoundationNavigation::Topbar
-    end.new
-  end
+    describe '#top_bar_nav' do
 
-  describe '#top_bar' do
-    context 'without parameters' do
-      it 'generates an empty top-bar structure' do
-        expect(subject.top_bar).to have_tag(:nav, with: { class: 'top-bar' }) do
-          with_tag :ul, with: { class: 'title-area' } do
-            with_tag :li, with: { class: 'name' }
-          end
+      context 'without parameters' do
+        it 'generates the top-bar nav' do
+          expect(Topbar.top_bar).to have_tag('nav.top-bar')
+        end
+
+        it 'renders title-area' do
+          expect(Topbar.top_bar).to have_tag('nav.top-bar > ul.title-area > li.name')
+        end
+
+        it 'renders top-bar-section' do
+          expect(Topbar.top_bar).to have_tag('nav.top-bar > section.top-bar-section')
         end
       end
     end
-  end
 
+  end
 end
