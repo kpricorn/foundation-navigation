@@ -23,5 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-html-matchers', '~> 0.4.3'
   spec.add_development_dependency 'padrino-helpers', '~> 0.11.2'
   spec.add_development_dependency 'guard-rspec', '~> 3.0.2'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry-debugger'
   spec.add_development_dependency "rake"
 end
