@@ -5,15 +5,10 @@ require 'foundation-navigation/topbar'
 module FoundationNavigation
 
   describe Topbar do
-    describe '#top_bar_nav' do
-
+    describe '#new' do
       context 'without parameters' do
-        it 'generates the top-bar nav' do
+        it 'renders the top-bar nav' do
           expect(subject.to_s).to have_tag('nav.top-bar')
-        end
-
-        it 'renders title-area' do
-          expect(subject.to_s).to have_tag('nav.top-bar > ul.title-area > li.name')
         end
 
         it 'renders top-bar-section' do
@@ -21,6 +16,5 @@ module FoundationNavigation
         end
       end
     end
-
   end
 end

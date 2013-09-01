@@ -59,10 +59,10 @@ module FoundationNavigation
 
     context 'with title_link' do
       it 'renders the corresponding link' do
-        expect(TitleArea.new(title: 'title', title_link: '/').to_s).to have_tag(
+        expect(TitleArea.new(title: 'title', title_link: '/foo').to_s).to have_tag(
           'ul.title-area > li.name > h1'
         ) do
-          with_tag('a', :href => '/')
+          with_tag('a', :href => '/foo')
         end
       end
     end
