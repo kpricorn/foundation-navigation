@@ -6,7 +6,7 @@ module FoundationNavigation
 
     include Builder
 
-    def initialize(title = nil, title_link = nil, menu_text: 'Menu', menu_icon:
+    def initialize(title: nil, title_link: nil, menu_text: 'Menu', menu_icon:
                    true)
       ul(class: 'title-area') do
         if title.present?

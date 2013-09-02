@@ -41,7 +41,7 @@ module FoundationNavigation
 
     context 'with only title' do
       it 'renders a h1 with the content of title' do
-        expect(TitleArea.new('title').to_s).to have_tag(
+        expect(TitleArea.new(title: 'title').to_s).to have_tag(
           'ul.title-area > li.name > h1'
         ) do
           with_tag('a', :text => 'title')
@@ -49,7 +49,7 @@ module FoundationNavigation
       end
 
       it 'renders # href' do
-        expect(TitleArea.new('title').to_s).to have_tag(
+        expect(TitleArea.new(title: 'title').to_s).to have_tag(
           'ul.title-area > li.name > h1'
         ) do
           with_tag('a', :href => '#')
@@ -59,7 +59,7 @@ module FoundationNavigation
 
     context 'with title_link' do
       it 'renders the corresponding link' do
-        expect(TitleArea.new('title', '/foo').to_s).to have_tag(
+        expect(TitleArea.new(title: 'title', title_link: '/foo').to_s).to have_tag(
           'ul.title-area > li.name > h1'
         ) do
           with_tag('a', :href => '/foo')
