@@ -1,5 +1,10 @@
 # Foundation::Navigation
 
+[![Gem Version](https://badge.fury.io/rb/foundation-navigation.png)](http://badge.fury.io/rb/foundation-navigation)
+[![Build Status](https://secure.travis-ci.org/kpricorn/foundation-navigation.png)](http://travis-ci.org/kpricorn/foundation-navigation)
+[![Dependency Status](https://gemnasium.com/kpricorn/foundation-navigation.png)](https://gemnasium.com/kpricorn/foundation-navigation)
+[![Code Climate](https://codeclimate.com/github/kpricorn/foundation-navigation.png)](https://codeclimate.com/github/kpricorn/foundation-navigation)
+
 TODO: Write a gem description
 
 ## Installation
