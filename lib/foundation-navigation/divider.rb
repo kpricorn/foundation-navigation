@@ -2,7 +2,10 @@ require_relative './builder'
 
 module FoundationNavigation
 
-  class Divider < Builder
+  class Divider
+
+    include Builder
+
     def initialize
       li(class: 'divider')
     end

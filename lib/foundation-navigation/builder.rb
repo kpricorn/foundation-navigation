@@ -1,7 +1,7 @@
 require_relative './node'
 
 module FoundationNavigation
-  class Builder
+  module Builder
     attr_accessor :node
 
     def to_s

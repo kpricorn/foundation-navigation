@@ -4,7 +4,10 @@ require_relative './divider'
 
 module FoundationNavigation
 
-  class Dropdown < Builder
+  class Dropdown
+
+    include Builder
+
     def build_subtree(klass, *args)
       @node.children << klass.new(*args).node
     end
@@ -15,6 +18,10 @@ module FoundationNavigation
 
     def menu_item(title, link, &block)
       build_subtree(MenuItem, title, link)
+    end
+
+    def dropdown(title, link = '#', &block)
+      build_subtree(Dropdown, title, link, &block)
     end
 
     def initialize(title, link = '#', &block)

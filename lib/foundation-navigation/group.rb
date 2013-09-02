@@ -2,7 +2,10 @@ require_relative './builder'
 
 module FoundationNavigation
 
-  class Group < Builder
+  class Group
+
+    include Builder
+
     def initialize(orientation: nil, &block)
       params = {}
       params[:class] = orientation if orientation.present?
