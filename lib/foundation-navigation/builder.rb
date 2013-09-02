@@ -4,16 +4,16 @@ module FoundationNavigation
   module Builder
     attr_accessor :node
 
-    def build_subtree(klass, *args, &block)
-      @node.children << klass.new(*args, &block).node
-    end
-
     def left(&block)
-      @node.children << FoundationNavigation::MenuGroup.new(orientation: 'left', &block).node
+      @node.children << FoundationNavigation::MenuGroup.new(
+        orientation: 'left', &block
+      ).node
     end
 
     def right(&block)
-      @node.children << FoundationNavigation::MenuGroup.new(orientation: 'right', &block).node
+      @node.children << FoundationNavigation::MenuGroup.new(
+        orientation: 'right', &block
+      ).node
     end
 
     def menu_group(*args, &block)
@@ -34,6 +34,10 @@ module FoundationNavigation
 
     def menu_item(*args, &block)
       build_subtree(FoundationNavigation::MenuItem, *args, &block)
+    end
+
+    def build_subtree(klass, *args, &block)
+      @node.children << klass.new(*args, &block).node
     end
 
     def to_s

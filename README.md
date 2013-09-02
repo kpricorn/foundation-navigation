@@ -21,7 +21,15 @@ Or install it yourself as:
 
 ## Usage
 
-    = topbar('Expo') do
+### Topbar
+
+See <http://foundation.zurb.com/docs/components/top-bar.html>
+
+#### Example
+
+This Haml snippet
+
+    = topbar(title: 'Expo') do
       - left do
         - dropdown 'Community', 'http://www.zurb.com/expo/community'  do
           - menu_item 'Forrst', 'http://www.forrst.com'
@@ -33,42 +41,83 @@ Or install it yourself as:
           - menu_item 'Word', 'http://www.zurb.com/word'
           - menu_item 'Responsive', 'http://www.zurb.com/responsive'
 
-generates
+generates the following top-bar
 
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#">Expo</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-      
-      <section class="top-bar-section">
-        <ul class="left">
-          <li class="has-dropdown">
-            <a href="http://www.zurb.com/expo/community">Community</a>
-            <ul class="dropdown">
-              <li class=""><a href="http://www.forrst.com">Forrst</a></li>
-              <li class=""><a href="http://www.zurb.com/soapbox">Soapbox</a></li>
-            </ul>
-          </li>
-          <li class="">
-            <a href="http://www.zurb.com/jobs">Job Board</a>
-          </li>
-        </ul>
-        <ul class="right">
-          <li class=""><a href="#">Courses</a></li>
-          <li class="has-dropdown">
-            <a href="#">Library</a>
-            <ul class="dropdown">
-              <li class=""><a href="http://patterntap.com">Pattern Tap</a></li>
-              <li class=""><a href="http://www.zurb.com/word">Word</a></li>
-              <li class=""><a href="http://www.zurb.com/responsive">Responsive</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-    </nav>
+![Sample Top Bar](images/menu_sample.png "Sample top-bar with expanded dropdown")
+
+### Methods
+
+#### topbar ####
+
+    = topbar
+
+or with specific options
+
+    = topbar title: 'Example', title_link: 'http://www.example.com', sticky: true
+
+Options:
+
+* __title__: Page Title (Default: empty)
+* __title_link__: Link on Title (Default: #)
+* __contain_to_grid__: Wraps top-bar in contain-to-grid div (Default: false)
+* __fixed__: Wraps top-bar in fixed div (Default: false)
+* __sticky__: Wraps top-bar in sticky div (Default: false)
+
+#### menu_group/left/right ####
+
+Helpers to nest menu-item groups and arrange them within the topbar.
+
+    = topbar do
+      - menu_group do             # <ul>...</ul>
+      # or
+      - left do                   # <ul class='left'>...</ul>
+        ...
+      - right do                  # <ul class='right'>...</ul>
+        ...
+
+#### divider ####
+
+Adds a divider element
+
+    = topbar do
+      - menu_group do             # <ul>...</ul>
+        - divider                 # <li class="divider"></li>
+        ...
+        - divider                 # <li class="divider"></li>
+
+#### dropdown ####
+
+Groups nested elements and renders them as dropdown box
+
+    = topbar do
+      - left do
+        - dropdown 'caption' do
+          ...
+
+generates the following markup
+
+    ...
+    <ul>
+      <li class="has-dropdown not-click">
+        <a href="#">caption</a>
+      </li>
+    </ul>
+    <ul class="dropdown">
+      ...
+    </ul>
+
+Options:
+
+* Dropdown caption
+* Dropdown link (on the caption, default: '#')
+
+#### menu_item ####
+
+Renders a single link and can be nested in a menu_group or a dropdown.
+
+    = topbar do
+      ...
+        - menu_item 'Title', '/link'  # <a href='/link'>Title</a>
 
 ## Contributing
 
