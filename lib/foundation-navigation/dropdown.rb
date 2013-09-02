@@ -8,24 +8,8 @@ module FoundationNavigation
 
     include Builder
 
-    def build_subtree(klass, *args)
-      @node.children << klass.new(*args).node
-    end
-
-    def divider
-      build_subtree(Divider)
-    end
-
-    def menu_item(title, link, &block)
-      build_subtree(MenuItem, title, link)
-    end
-
-    def dropdown(title, link = '#', &block)
-      build_subtree(Dropdown, title, link, &block)
-    end
-
     def initialize(title, link = '#', &block)
-      li(class: 'has-dropdown') do
+      li(class: 'has-dropdown not-click') do
         a(href: link) { title }
         ul(class: 'dropdown') do
           if block_given?

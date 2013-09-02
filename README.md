@@ -18,18 +18,17 @@ Or install it yourself as:
 
 ## Usage
 
-    = topbar(title: 'Expo') do
-      left do
-        dropdown 'Community', 'http://www.zurb.com/expo/community'  do
-          menu_item 'Forrst', 'http://www.forrst.com"
-          menu_item 'Soapbox', 'http://www.zurb.com/soapbox"
-      right do
-        menu_item 'Courses', '#'
-        dropdown 'Library' do
-          menu_item 'Pattern' Tap, 'http://patterntap.com'
-          menu_item 'Word', 'http://www.zurb.com/word'
-          menu_item 'Responsive', 'http://www.zurb.com/responsive'
-
+    = topbar('Expo') do
+      - left do
+        - dropdown 'Community', 'http://www.zurb.com/expo/community'  do
+          - menu_item 'Forrst', 'http://www.forrst.com'
+          - menu_item 'Soapbox', 'http://www.zurb.com/soapbox'
+      - right do
+        - menu_item 'Courses', '#'
+        - dropdown 'Library' do
+          - menu_item 'Pattern Tap', 'http://patterntap.com'
+          - menu_item 'Word', 'http://www.zurb.com/word'
+          - menu_item 'Responsive', 'http://www.zurb.com/responsive'
 
 generates
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'padrino-helpers'
-require 'foundation-navigation/group'
+require 'foundation-navigation/menu_group'
 
 # <ul class="left">
 # ...
@@ -8,7 +8,7 @@ require 'foundation-navigation/group'
 
 module FoundationNavigation
 
-  describe Group do
+  describe MenuGroup do
 
     describe '#new' do
       context 'without parameters' do
@@ -19,7 +19,7 @@ module FoundationNavigation
 
       context 'with orientation' do
         it 'adds the orientation class' do
-          expect(Group.new(orientation: 'left').to_s).to have_tag('ul.left')
+          expect(MenuGroup.new(orientation: 'left').to_s).to have_tag('ul.left')
         end
       end
     end
