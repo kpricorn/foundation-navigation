@@ -44,11 +44,21 @@ module FoundationNavigation
       @node.to_s
     end
 
-    def method_missing(name, opts = {}, &block)
+    def method_missing(method, *args, &block)
+      if %i(li ul nav div h1 a span section).include? method
+        add_node(method, *args, &block)
+      else
+        @self_before_instance_eval.send(method, *args, &block)
+      end
+    end
+
+    private
+    def add_node(name, *opts, &block)
       parent = @node
-      @node = Node.new(parent, name, opts)
+      @node = Node.new(parent, name, *opts)
       parent.children << @node if parent
       if block_given?
+        @self_before_instance_eval = eval "self", block.binding
         val = instance_eval(&block)
         @node.children << val if val.is_a?(String)
       end

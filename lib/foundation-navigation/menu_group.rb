@@ -9,11 +9,7 @@ module FoundationNavigation
     def initialize(orientation: nil, &block)
       params = {}
       params[:class] = orientation if orientation.present?
-      ul(params) do
-        if block_given?
-          self.instance_eval(&block)
-        end
-      end
+      ul(params, &block)
     end
   end
 

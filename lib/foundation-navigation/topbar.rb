@@ -10,11 +10,7 @@ module FoundationNavigation
     def navigation(**args, &block)
       nav(class: 'top-bar') do
         build_subtree(FoundationNavigation::TitleArea, **args)
-        section(class: 'top-bar-section') do
-          if block_given?
-            self.instance_eval(&block)
-          end
-        end
+        section(class: 'top-bar-section', &block)
       end
     end
 

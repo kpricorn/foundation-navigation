@@ -11,11 +11,7 @@ module FoundationNavigation
     def initialize(title, link = '#', &block)
       li(class: 'has-dropdown not-click') do
         a(href: link) { title }
-        ul(class: 'dropdown') do
-          if block_given?
-            instance_eval(&block)
-          end
-        end
+        ul(class: 'dropdown', &block)
       end
     end
   end
